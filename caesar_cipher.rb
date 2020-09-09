@@ -6,16 +6,15 @@ def caesar_cipher(string, shift)
     letters.each do |letter|
         if letter == " "
             newAscii = 32
-        elsif letter == "z"
-            ascii = 97
-            newAscii = ascii + (shift-1)
-        elsif letter == "Z"
-            ascii = 65
-            newAscii = ascii + (shift-1)
         else
         ascii = letter.ord
         newAscii = ascii + shift
-        newLetter = newAscii.chr
+        end
+        if newAscii >= 123
+            newAscii = 97 + (newAscii - 123)
+        end
+        if newAscii >=91 && newAscii < 96
+            newAscii = 65 + (newAscii - 91)
         end
         newLetter = newAscii.chr
         shiftedString.push(newLetter)
@@ -26,4 +25,4 @@ def caesar_cipher(string, shift)
 
 end
 
-caesar_cipher("My name is Sean", 1)
+caesar_cipher("MY name is Sean", 5)
